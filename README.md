@@ -9,8 +9,9 @@ Revisão de trechos de código para clareza e legibilidade
 
 ## Exemplo de uso da IA
 
-### Sugestão de migration
-###Prompt:
+## Sugestão de migration
+## Prompt:
+
 Dê uma sugestão de migration de acordo com essas informações: Cadastro de lançamentos financeiros com descrição, valor, tipo
 entrada/saída e status previsto/confirmado
 ---
