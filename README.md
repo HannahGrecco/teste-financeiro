@@ -10,35 +10,10 @@ Revisão de trechos de código para clareza e legibilidade
 ## Exemplo de uso da IA
 
 ### Sugestão de migration
-
+Prompt:
 Dê uma sugestão de migration de acordo com essas informações: Cadastro de lançamentos financeiros com descrição, valor, tipo
 entrada/saída e status previsto/confirmado
+---
 
-Schema::create('financial_entries', function (Blueprint $table) {
-            $table->id();
-            $table->string('description');
-            
-            // decimal é melhor que float pra dinheiro
-            $table->decimal('amount', 10, 2);
-            
-            // enum para valores controlados
-            $table->enum('type', ['entrada', 'saida']);
-            $table->enum('status', ['previsto', 'confirmado'])
-                  ->default('previsto');
-
-            $table->timestamps();
-        });
-
- 
-    public function up(): void
-    {
-        Schema::create('financial_transactions', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-        $table->string('description');
-        $table->decimal('amount', 10, 2);
-        $table->enum('type', ['entrada', 'saida']);
-        $table->enum('status', ['previsto', 'confirmado']);
-        $table->timestamps();
-});
-    }
+Inicialmente foi criada uma estrutura base apenas com descrição, valor, tipo de transação (entrada ou saída) e status (previsto ou confirmado), servindo como modelo de estudo para entender a organização de dados financeiros.
+Depois essa estrutura foi evoluída para a versão utilizada no projeto, onde foi adicionada a relação com usuários. Assim, cada transação pertence a um usuário específico, permitindo um sistema multiusuário.
